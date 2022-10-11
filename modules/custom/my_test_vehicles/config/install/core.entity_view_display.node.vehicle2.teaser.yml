@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.vehicle2.body
+    - field.field.node.vehicle2.field_brand
+    - field.field.node.vehicle2.field_colour
+    - field.field.node.vehicle2.field_mediareft
+    - field.field.node.vehicle2.field_mot_expiry_date
+    - field.field.node.vehicle2.field_number_of_doors
+    - field.field.node.vehicle2.field_registration_number
+    - node.type.vehicle2
+  module:
+    - text
+    - user
+id: node.vehicle2.teaser
+targetEntityType: node
+bundle: vehicle2
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_brand: true
+  field_colour: true
+  field_mediareft: true
+  field_mot_expiry_date: true
+  field_number_of_doors: true
+  field_registration_number: true
+  langcode: true

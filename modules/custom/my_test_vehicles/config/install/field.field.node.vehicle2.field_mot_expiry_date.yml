@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mot_expiry_date
+    - node.type.vehicle2
+  module:
+    - datetime
+id: node.vehicle2.field_mot_expiry_date
+field_name: field_mot_expiry_date
+entity_type: node
+bundle: vehicle2
+label: 'mot Expiry Date'
+description: 'the date the mot is expired for vehicle'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

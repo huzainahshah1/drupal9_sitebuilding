@@ -1,0 +1,4 @@
+name: Vehicles Custom
+description: a vehicle custom module
+type: module
+core_version_requirement: '^8.9 || ^9'

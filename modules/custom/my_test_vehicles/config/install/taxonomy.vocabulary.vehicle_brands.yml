@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Vehicle Brands'
+vid: vehicle_brands
+description: 'Type of vehicle'
+weight: 0

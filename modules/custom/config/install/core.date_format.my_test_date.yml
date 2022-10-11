@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: my_test_date
+label: 'my test date'
+locked: false
+pattern: D/M/Y

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_colour
+    - node.type.vehicle2
+  module:
+    - color_field
+id: node.vehicle2.field_colour
+field_name: field_colour
+entity_type: node
+bundle: vehicle2
+label: Colour
+description: 'colour of the vehicle'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 1
+field_type: color_field_type

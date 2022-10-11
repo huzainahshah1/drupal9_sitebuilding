@@ -1,0 +1,9 @@
+name: 'my test users'
+type: module
+core_version_requirement: '^8.9 || ^9'
+dependencies:
+  - 'drupal:content_moderation'
+  - 'drupal:datetime'
+  - 'drupal:field'
+  - 'drupal:image'
+  - 'drupal:user'

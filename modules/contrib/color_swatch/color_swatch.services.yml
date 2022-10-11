@@ -1,0 +1,4 @@
+services:
+  color_swatch.manager:
+    class: Drupal\color_swatch\ColorSwatchManager
+    arguments: ['@theme.manager', '@extension.list.theme', '@module_handler' ]

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_brand
+    - node.type.vehicle2
+    - taxonomy.vocabulary.vehicle_brands
+id: node.vehicle2.field_brand
+field_name: field_brand
+entity_type: node
+bundle: vehicle2
+label: Brand
+description: 'the type of vehicle'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      vehicle_brands: vehicle_brands
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

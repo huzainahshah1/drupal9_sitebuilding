@@ -1,0 +1,21 @@
+my_test_core.routetest:
+  path: '/view-my-vehicle/{vehicle_nid}'
+  defaults:
+    _controller: '\Drupal\my_test_core\Controller\MyTestCoreController::content'
+  requirements:
+    _custom_access: '\Drupal\my_test_core\Controller\MyTestCoreController:access'
+  options:
+    parameters:
+      vehicle_nid:
+        type: entity:node
+my_test_core.ViewMyVehiclePageAccess.routetest:
+  path: '/admin/config/vehicle-route-config'
+  defaults:
+    _form: '\Drupal\my_test_core\Form\ViewMyVehiclePageAccess'
+    _title: 'ViewMyVehiclePageAccess'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+

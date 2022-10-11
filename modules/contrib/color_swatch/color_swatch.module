@@ -1,0 +1,137 @@
+<?php
+
+use Drupal\color_swatch\ColorSwatch;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\Messenger;
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ *
+ * @param array $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function color_swatch_form_system_theme_settings_alter(array &$form, FormStateInterface $form_state) {
+  $build_info = $form_state->getBuildInfo();
+  if (!isset($build_info['args'][0]) || !($theme = $build_info['args'][0])) {
+    return;
+  }
+
+  /** @var \Drupal\color_swatch\ColorSwatchManager $colorSwatchManager */
+  $colorSwatchManager = Drupal::service('color_swatch.manager');
+
+  $colorSwatchesInfo = $colorSwatchManager->getThemeColorSwatchesInfo($theme);
+  $colorPlaceholdersInfo = $colorSwatchManager->getThemeColorSwatchPlaceholdersInfo($theme);
+  $defaultColorSwatchName = $colorSwatchManager->getThemeDefaultColorSwatchName($theme);
+
+  if (!$colorSwatchManager->hasColorSwatches($theme)) {
+    return;
+  }
+
+  if (empty($colorSwatchesInfo)) {
+    Drupal::messenger()
+      ->addMessage(t('No color swatches in this theme are correctly defined'), Messenger::TYPE_ERROR);
+    return;
+  }
+  if (isset($colorSwatchesInfo['custom'])) {
+    Drupal::messenger()
+      ->addMessage(t('The color swatch name \'custom\' cannot be used, this is a reserved name.'), Messenger::TYPE_ERROR);
+  }
+  if (empty($colorPlaceholdersInfo)) {
+    Drupal::messenger()
+      ->addMessage(t('No color placeholder in this theme are correctly defined'), Messenger::TYPE_ERROR);
+    return;
+  }
+  if (empty($defaultColorSwatchName) || !isset($colorSwatchesInfo[$defaultColorSwatchName])) {
+    Drupal::messenger()
+      ->addMessage(t('The default color swatch name has no corresponding color swatch defined in this theme.'), Messenger::TYPE_ERROR);
+    return;
+  }
+
+  $form['color_swatch'] = [
+    '#type' => 'details',
+    '#title' => t('Color Swatch'),
+    '#open' => TRUE,
+    '#weight' => -1,
+    '#tree' => TRUE,
+  ];
+
+  $colorSwatchNames = array_keys($colorSwatchesInfo);
+  $colorSwatchOptions = array_combine($colorSwatchNames, $colorSwatchNames);
+  $colorSwatchOptions['custom'] = 'custom';
+
+  $form['color_swatch']['active'] = [
+    '#type' => 'select',
+    '#title' => t('Swatches'),
+    '#options' => $colorSwatchOptions,
+    '#default_value' => $colorSwatchManager->getActiveColorSwatchName($theme),
+  ];
+
+  $form['color_swatch']['settings'] = [];
+  foreach ($colorSwatchNames as $colorSwatchName) {
+    $colorSwatch = $colorSwatchManager->getColorSwatch($theme, $colorSwatchName);
+    _color_swatch_theme_form_element($form['color_swatch']['settings'], $colorSwatch);
+  }
+
+  $colorSwatch = $colorSwatchManager->getColorSwatch($theme, 'custom');
+  _color_swatch_theme_form_element($form['color_swatch']['settings'], $colorSwatch);
+}
+
+/**
+ * @param array $form
+ * @param \Drupal\color_swatch\ColorSwatch $colorSwatch
+ */
+function _color_swatch_theme_form_element(array &$form, ColorSwatch $colorSwatch) {
+  $form[$colorSwatch->getName()] = [
+    '#type' => 'details',
+    '#title' => 'custom',
+    '#open' => TRUE,
+    '#collapsible' => FALSE,
+    '#weight' => 100,
+    '#states' => [
+      'visible' => [
+        ':input[name="color_swatch[active]"]' => ['value' => $colorSwatch->getName()],
+      ],
+      'enabled' => [
+        ':input[name="color_swatch[active]"]' => ['value' => $colorSwatch->getName()],
+      ],
+    ],
+  ];
+
+  foreach ($colorSwatch->getPlaceholders() as $placeholder) {
+    $form[$colorSwatch->getName()][$placeholder] = [
+      '#type' => 'color',
+      '#title' => $placeholder,
+      '#default_value' => $colorSwatch->getHex($placeholder),
+    ];
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function color_swatch_page_attachments(array &$attachments) {
+  $colorSwatchManager = Drupal::service('color_swatch.manager');
+  $theme = $colorSwatchManager->getActiveTheme();
+  if (!$colorSwatchManager->hasColorSwatches($theme->getName())) {
+    return;
+  }
+  $colorSwatch = $colorSwatchManager->getActiveColorSwatch($theme->getName());
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#tag' => 'style',
+      '#value' => $colorSwatch->renderCss(),
+    ],
+    'color_swatch-css',
+  ];
+}
+
+/**
+ * Implements hook_theme().
+ */
+function color_swatch_theme($existing, $type, $theme, $path) {
+  return [
+    'color_swatch_css' => [
+      'variables' => ['color_swatch' => NULL],
+    ],
+  ];
+}

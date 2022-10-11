@@ -1,0 +1,7 @@
+name: 'my test config'
+type: module
+core_version_requirement: '^8.9 || ^9'
+dependencies:
+  - 'drupal:language'
+  - 'drupal:node'
+  - 'pathauto:pathauto'

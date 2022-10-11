@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: task6
+label: task6
+type: 'canonical_entities:node'
+pattern: 'vehicle/[node:title]'
+selection_criteria:
+  41846b87-1a39-4c62-96ec-6c07529058cb:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 41846b87-1a39-4c62-96ec-6c07529058cb
+    context_mapping:
+      node: node
+    bundles:
+      vehicle2: vehicle2
+  59cd10e0-a748-4037-910c-efb04961a491:
+    id: language
+    negate: false
+    uuid: 59cd10e0-a748-4037-910c-efb04961a491
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      en: en
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

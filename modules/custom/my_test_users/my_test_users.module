@@ -1,0 +1,10 @@
+<?php
+/**
+ * Implements hook_preprocess().
+ *
+ * Popup banner module.
+ */
+function my_test_users_preprocess_page(&$vars) {
+$a=1;
+}
+

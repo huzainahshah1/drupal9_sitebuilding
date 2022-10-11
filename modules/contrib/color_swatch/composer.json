@@ -1,0 +1,10 @@
+{
+  "name": "drupal/color_swatch",
+  "description": "Color swatch functionality for drupal themes.",
+  "type": "drupal-module",
+  "license": "proprietary",
+  "keywords": ["Drupal", "Drupal 8", "Theme"],
+  "require": {
+    "drupal/core": "^8.9|^9.0"
+  }
+}

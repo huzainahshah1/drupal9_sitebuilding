@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.vehicle_brands.field_region
+    - taxonomy.vocabulary.vehicle_brands
+  module:
+    - options
+    - text
+id: taxonomy_term.vehicle_brands.default
+targetEntityType: taxonomy_term
+bundle: vehicle_brands
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_region:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true

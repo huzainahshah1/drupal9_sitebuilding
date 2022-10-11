@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_number_of_doors
+    - node.type.vehicle2
+id: node.vehicle2.field_number_of_doors
+field_name: field_number_of_doors
+entity_type: node
+bundle: vehicle2
+label: 'Number of doors'
+description: 'the number of doors the vehicle has.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

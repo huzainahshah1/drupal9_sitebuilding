@@ -1,0 +1,42 @@
+<?php
+
+function vehicles_custom_views_data(){
+  $data = [];
+  $data['vehicles_custom']= [];
+  $data['vehicles_custom']['table']= [
+    'table'=>[
+      'group'=>t('Vehicle Custom'),
+      'provider'=>'vehicles_custom',
+      'base'=>[
+        'field'=>'vehicle_name',
+        'title'=>t('Vehicles Custom'),
+      ],
+    ],
+    'vehicle_name'=>[
+      'title'=>t('Name'),
+      'field'=> [
+        'id' => 'varchar',
+      ],
+    'vehicle_colour'=>[
+      'title'=>t('Colour'),
+      'field'=>[
+        'id'=>'numeric',
+      ],
+    'owner_id'=>[
+      'title'=>t('Owner ID'),
+      'field'=>[
+        'id'=>'numeric',
+      ],
+    'custom_id'=>[
+      'title'=>t('Custom ID'),
+      'field'=>[
+        'id'=>'numeric',
+      ]
+    ]
+    ]
+    ]
+
+    ]
+  ];
+  return $data;
+}

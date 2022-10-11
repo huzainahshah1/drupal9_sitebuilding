@@ -1,0 +1,12 @@
+name: Content Moderation Owner Permissions
+type: module
+description: Permissions for moderating own content.
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:content_moderation
+
+# Information added by Drupal.org packaging script on 2022-06-22
+version: '1.0.0-alpha2'
+project: 'content_moderation_owner_permissions'
+datestamp: 1655884761

@@ -1,4 +1,19 @@
 name: d9sitebuilding
 recipe: drupal9
+domain: d9sitebuilding.lndo.site
 config:
-  webroot: .
+  webroot: web
+  php: 8.1
+  via: apache
+  database: mysql:5.7
+  drush: 11.1.1
+  xdebug: true
+  config:
+    php: .lando/php/php.ini
+services:
+  pma:
+    type: phpmyadmin:5.0
+    hosts: [ database ]
+proxy:
+  pma:
+    - localhost

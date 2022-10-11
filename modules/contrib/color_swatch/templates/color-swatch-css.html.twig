@@ -1,0 +1,9 @@
+:root {
+{% for placeholder in color_swatch.placeholders() %}
+  --color-{{ placeholder }}: {{ color_swatch.hex(placeholder) }};
+  --color-{{ placeholder }}-hue: {{ color_swatch.hue(placeholder) }}deg;
+  --color-{{ placeholder }}-lightness: {{ color_swatch.lightness(placeholder) }}%;
+  --color-{{ placeholder }}-saturation: {{ color_swatch.saturation(placeholder) }}%;
+  --color-{{ placeholder }}-contrast-ratio:{{ color_swatch.contractRatio(placeholder) }};
+{% endfor %}
+}

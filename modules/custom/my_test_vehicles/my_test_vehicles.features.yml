@@ -1,0 +1,4 @@
+excluded:
+  - user.role.vehicle_editor
+  - user.role.vehicle_admin
+required: true

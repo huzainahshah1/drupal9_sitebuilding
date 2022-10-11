@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+id: vehicle_admin
+label: 'Vehicle Admin'
+weight: 5
+is_admin: null

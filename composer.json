@@ -16,10 +16,23 @@
     ],
     "require": {
         "composer/installers": "^1.9",
+        "drupal/admin_toolbar": "^3.1",
+        "drupal/bootstrap": "^3.25",
+        "drupal/bootstrap5": "^2.0",
+        "drupal/color_field": "^2.5",
+        "drupal/color_swatch": "^1.0",
+        "drupal/content_moderation_owner_permissions": "^1.0@alpha",
         "drupal/core-composer-scaffold": "^9.4",
         "drupal/core-project-message": "^9.4",
         "drupal/core-recommended": "^9.4",
-        "drupal/core-vendor-hardening": "^9.4"
+        "drupal/core-vendor-hardening": "^9.4",
+        "drupal/features": "^3.12",
+        "drupal/field_group": "^3.2",
+        "drupal/menu_block": "^1.8",
+        "drupal/paragraphs": "^1.15",
+        "drupal/pathauto": "^1.11",
+        "drupal/webform_migrate": "^1.2",
+        "drush/drush": "^11.1"
     },
     "conflict": {
         "drupal/drupal": "*"

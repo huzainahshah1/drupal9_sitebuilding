@@ -1,0 +1,10 @@
+name: 'Color Swatch'
+description: 'Add color swatches to your theme settings.'
+type: module
+core: 8.x
+core_version_requirement: '^8 || ^9'
+
+# Information added by Drupal.org packaging script on 2022-03-29
+version: '1.0.7'
+project: 'color_swatch'
+datestamp: 1648533101

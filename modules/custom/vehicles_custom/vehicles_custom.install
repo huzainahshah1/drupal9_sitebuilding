@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function vehicles_custom_schema() {
+  $schema['vehicles_custom'] = [
+    'description' => 'A table to store simple data',
+    'fields' => [
+      'custom_id' => [
+        'description' => 'Holds the id value',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'vehicle_name' => [
+        'description' => 'Holds the name value',
+        'type' => 'varchar',
+        'length' => '50',
+        'not null' => TRUE,
+      ],
+      'vehicle_colour' => [
+        'description' => 'Holds the colour value',
+        'type' => 'varchar',
+        'length' => '50',
+        'not null' => TRUE,
+      ],
+      'owner_id' => [
+        'description' => 'Holds the owner id value',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+      ],
+    ],
+    'primary key' => ['custom_id'],
+  ];
+  return $schema;
+}
