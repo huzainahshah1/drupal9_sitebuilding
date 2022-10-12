@@ -2,7 +2,7 @@ name: d9sitebuilding
 recipe: drupal9
 domain: d9sitebuilding.lndo.site
 config:
-  webroot: web
+  webroot: .
   php: 8.1
   via: apache
   database: mysql:5.7
@@ -11,9 +11,25 @@ config:
   config:
     php: .lando/php/php.ini
 services:
+  appserver:
+    composer_version: 2.1.14
+    overrides:
+      environment:
+        PHP_IDE_CONFIG: "serverName=localhost"
   pma:
     type: phpmyadmin:5.0
     hosts: [ database ]
 proxy:
   pma:
     - localhost
+
+
+
+
+
+
+
+
+
+
+

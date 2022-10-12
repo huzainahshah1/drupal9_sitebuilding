@@ -34,7 +34,7 @@ class ViewMyVehiclePageAccess extends ConfigFormBase {
     $config = $this->config('ViewMyVehiclePageAccess.adminsettings');
 
     $form['ViewMyVehiclePageAccess']['elements']['name']['#title']= [
-      t('What roles can see this page')
+      t('What roles can see this page'),
     ];
     $form['ViewMyVehiclePageAccess']['checkboxes_section'] = [
       '#type' => 'checkboxes',
