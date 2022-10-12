@@ -1,32 +1,25 @@
 <?php
 
 /**
-function my_test_core_preprocess_node($variables) {
-  $node = $variables['node'];
-  if ($variables['node']->bundle() == 'vehicle2' && $variables['view_mode'] == 'full') {
-    $variables['my_vehicle_title']  = $node->getTitle();
-
-  }
-
-}
-*/
-
-
+ * Implements hook_preprocess_node().
+ */
 function my_test_core_preprocess_node__vehicle2($variables) {
+  // Task1E.
   $node = $variables['node'];
   $node_type = $node->getType();
 
   if ($node_type == 'vehicle2') {
     $vehicle_title = $node->getTitle();
     $variables['my_vehicle_title'] = $vehicle_title;
-
   }
 
-  $query =\Drupal::entityQuery('node')
+  $query = \Drupal::entityQuery('node')
     ->condition('type', 'vehicle2')
     ->execute();
 
-  $entity1 = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($query);
+  $entity1 = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->loadMultiple($query);
 
   $vehicle_data = [];
   foreach ($entity1 as $entity) {
@@ -39,111 +32,109 @@ function my_test_core_preprocess_node__vehicle2($variables) {
       'author_name' => $author_name,
       'vehicle_node_id' => $vehicle_node_id,
     ];
-
-    $vehicle_data[]= $individual_vehicle_data;
-
-
+    $vehicle_data[] = $individual_vehicle_data;
   }
   $variables['all_vehicle_data'] = $vehicle_data;
-
-
-
-
-
-
 }
 
-function my_test_core_theme_hook($existing, $type, $theme, $path){
+function my_test_core_theme_hook($existing, $type, $theme, $path) {
   return [
     'my_template' => [
       'variables' => [
-        'some_custom_text'=> NULL,
-        'title_of_vehicle'=>NULL,
-        'authors_name'=> NULL,
+        'some_custom_text' => NULL,
+        'title_of_vehicle' => NULL,
+        'authors_name' => NULL,
       ],
     ],
   ];
 }
-function my_test_core_preprocess_paragraph__multimedia_component($variables){
-  $paragraph = $variables['paragraph'];
-  $variables['multimedia_component']=$paragraph->get('title')->value;
 
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function my_test_core_preprocess_paragraph__multimedia_component($variables) {
+  $paragraph = $variables['paragraph'];
+  $variables['multimedia_component'] = $paragraph->get('title')->value;
 }
 
-function my_test_core_preprocess_paragraph__copy_and_image_component($variables){
+function my_test_core_preprocess_paragraph__copy_and_image_component($variables) {
   $paragraph = $variables['paragraph'];
-  $variables['copy_and_image_component']= $paragraph->get('title')->value;
-
-}
-function my_test_core_preprocess_paragraph(&$variables){
-  $paragraph = $variables['paragraph'];
-  $f=1;
+  $variables['copy_and_image_component'] = $paragraph->get('title')->value;
 }
 
-function my_test_core_preprocess_paragraph__generic_component_variable($variables){
+function my_test_core_preprocess_paragraph(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $f = 1;
+}
+
+function my_test_core_preprocess_paragraph__generic_component_variable($variables) {
   $paragraph = $variables['paragraph'];
   $variables['generic_component_variable'] = $paragraph->get('type')->value;
 }
 
 function my_test_core_form_webform_submission_form_add_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $formState, $form_id) {
   #2a
-$form['elements']['name']['#title'] = t('Please enter your name');
-$form['elements']['are_you_enjoying_the_website_']['#options'] = ['its ok', 'good', 'pretty good', 'not enjoying', 'great'];
-$form['elements']['are_you_enjoying_the_website_']['#options_radomize'] = true;
-$form['elements']['description']['#placeholder']= t('Please enter some comments here!');
-$form['are_you_enjoying_the_website'] ['check'] = [
-  '#type' => 'checkbox',
-  '#title' => t('Would you like to opt in?'),
+  $form['elements']['name']['#title'] = t('Please enter your name');
+  $form['elements']['are_you_enjoying_the_website_']['#options'] = [
+    'its ok',
+    'good',
+    'pretty good',
+    'not enjoying',
+    'great',
+  ];
+  $form['elements']['are_you_enjoying_the_website_']['#options_radomize'] = TRUE;
+  $form['elements']['description']['#placeholder'] = t('Please enter some comments here!');
+  $form['are_you_enjoying_the_website'] ['check'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Would you like to opt in?'),
   ];
 
-$form['elements']['actions']['#submit__label'] = t('Lets go');
+  $form['elements']['actions']['#submit__label'] = t('Lets go');
 
 
-
- // $form ['are_you_enjoying_the_website'] = [
-//    '#type' => 'radios',
-//    '#title' => t('are you enjoying this website?'),
-//    '#type' => 'checkbox',
-//    '#title' => t('Would you like to opt in?'),
-//    '#options' => ['its ok',
-//    'good',
-//    'pretty good',
-//    'not enjoying',
-//    'great'],
-//    '#options_randomize' => TRUE,
-//  ];
-//  $form['#validate'][] = 'my_test_core_webform_submission_form_add_form_validate';
-//
-//  #2b
-//
-//
-//  $form['name'] = [
-//    '#type' => 'textfield',
-//    '#title' => t(''),
-//    '#markup' => t('Please enter your Name'),
-//    '#prefix' => '<p>',
-//    '#suffix' => '</p>',
-//
-//  ];
-//
-//  #2c
-//  $form ['desc'] = [
-//    '#type' => 'textarea',
-//    '#title' => t('Description'),
-//    '#markup' => t('Please enter some comments here!'),
-//    '#prefix' => '<p>',
-//    '#suffix' => '</p>',
-//  ];
-//
-//
-//  #2e
-//  $form['submit_button'] = [
-//    '#type' => 'button',
-//    '#title' => t('Submit'),
-//    '#submit' => t('Lets go!'),
-//
-//  ];
-
+  // $form ['are_you_enjoying_the_website'] = [
+  //    '#type' => 'radios',
+  //    '#title' => t('are you enjoying this website?'),
+  //    '#type' => 'checkbox',
+  //    '#title' => t('Would you like to opt in?'),
+  //    '#options' => ['its ok',
+  //    'good',
+  //    'pretty good',
+  //    'not enjoying',
+  //    'great'],
+  //    '#options_randomize' => TRUE,
+  //  ];
+  //  $form['#validate'][] = 'my_test_core_webform_submission_form_add_form_validate';
+  //
+  //  #2b
+  //
+  //
+  //  $form['name'] = [
+  //    '#type' => 'textfield',
+  //    '#title' => t(''),
+  //    '#markup' => t('Please enter your Name'),
+  //    '#prefix' => '<p>',
+  //    '#suffix' => '</p>',
+  //
+  //  ];
+  //
+  //  #2c
+  //  $form ['desc'] = [
+  //    '#type' => 'textarea',
+  //    '#title' => t('Description'),
+  //    '#markup' => t('Please enter some comments here!'),
+  //    '#prefix' => '<p>',
+  //    '#suffix' => '</p>',
+  //  ];
+  //
+  //
+  //  #2e
+  //  $form['submit_button'] = [
+  //    '#type' => 'button',
+  //    '#title' => t('Submit'),
+  //    '#submit' => t('Lets go!'),
+  //
+  //  ];
 
 
 }
