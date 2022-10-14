@@ -11,7 +11,7 @@ use Drupal\Core\Session\AccountInterface;
 class MyTestCoreController extends ControllerBase {
 
   /**
-   * Returns a render-able array for a test page.
+   * Returns a render-able array for a page.
    */
   public function content() {
     return [
@@ -24,7 +24,9 @@ class MyTestCoreController extends ControllerBase {
 
   }
 
-
+  /**
+   * Implements a access function
+   */
   public function access(AccountInterface $account) {
     // Check permissions and combine that with any custom access checking needed. Pass forward
     // parameters from the route and/or request as needed.
