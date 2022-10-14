@@ -72,6 +72,9 @@ function my_test_core_preprocess_paragraph__generic_component_variable($variable
   $variables['generic_component_variable'] = $paragraph->get('type')->value;
 }
 
+/**
+ * Task2.Render API: Forms
+ */
 function my_test_core_form_webform_submission_form_add_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $formState, $form_id) {
   #2a
   $form['elements']['name']['#title'] = t('Please enter your name');
@@ -90,119 +93,5 @@ function my_test_core_form_webform_submission_form_add_form_alter(&$form, \Drupa
   ];
 
   $form['elements']['actions']['#submit__label'] = t('Lets go');
-
-
-  // $form ['are_you_enjoying_the_website'] = [
-  //    '#type' => 'radios',
-  //    '#title' => t('are you enjoying this website?'),
-  //    '#type' => 'checkbox',
-  //    '#title' => t('Would you like to opt in?'),
-  //    '#options' => ['its ok',
-  //    'good',
-  //    'pretty good',
-  //    'not enjoying',
-  //    'great'],
-  //    '#options_randomize' => TRUE,
-  //  ];
-  //  $form['#validate'][] = 'my_test_core_webform_submission_form_add_form_validate';
-  //
-  //  #2b
-  //
-  //
-  //  $form['name'] = [
-  //    '#type' => 'textfield',
-  //    '#title' => t(''),
-  //    '#markup' => t('Please enter your Name'),
-  //    '#prefix' => '<p>',
-  //    '#suffix' => '</p>',
-  //
-  //  ];
-  //
-  //  #2c
-  //  $form ['desc'] = [
-  //    '#type' => 'textarea',
-  //    '#title' => t('Description'),
-  //    '#markup' => t('Please enter some comments here!'),
-  //    '#prefix' => '<p>',
-  //    '#suffix' => '</p>',
-  //  ];
-  //
-  //
-  //  #2e
-  //  $form['submit_button'] = [
-  //    '#type' => 'button',
-  //    '#title' => t('Submit'),
-  //    '#submit' => t('Lets go!'),
-  //
-  //  ];
-
-
 }
-
-//  $form ['are_you_enjoying_the_website'] = [
-//    '#type' => 'radios',
-//    '#title' => t('are you enjoying this website?'),
-//
-//
-//  ];
-//  $form['are_you_enjoying_the_website'] ['option_random'] = [
-//    '#options' => 'its ok',
-//    'good',
-//    'pretty good',
-//    'not enjoying',
-//    'great',
-//    '#options_randomize' => TRUE,
-//
-//  ];
-//  #2b
-//
-//  $form['name'] = [
-//    '#type' => 'textfield',
-//    '#title' => t('Name'),
-//    '#description' => t('Please enter your Name'),
-//    '#prefix' => '<p>',
-//    '#suffix' => '</p>',
-//
-//  ];
-//}
-//
-//  #2c
-//  $form ['desc'] = [
-//    '#type' => 'textarea',
-//    '#title' => t('Description'),
-//  ];
-//  $form['desc'] ['desc_field'] = [
-//    '#description' => t('Please enter some comments here!'),
-//    '#prefix' => '<p>',
-//    '#suffix' => '<p>',
-//  ];
-//  #2d
-//  $form['are_you_enjoying_the_website'] ['check'] = [
-//    '#type' => 'checkbox',
-//    '#title' => t('Would you like to opt in?'),
-//  ];
-//
-//  $form['#validate'][] = 'my_test_core_form1_validate';
-//  #2e
-//  $form['submit_button'] = [
-//    '#type' => 'button',
-//    '#title' => t('submit'),
-//  ];
-//
-//  $form['submit_button'] ['new_button'] = [
-//    '#markup' => t('Lets go!'),
-//    '#prefix' => '<p>',
-//    '#suffix' => '</p>',
-//  ];
-//
-//
-//
-//
-//
-//
-//
-//
-//
-///**
-// * Implements hook_preprocess().
 
