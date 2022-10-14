@@ -16,7 +16,7 @@
     ],
     "require": {
         "composer/installers": "^1.9",
-        "drupal/admin_toolbar": "^3.1",
+        "drupal/admin_toolbar": "^3.2.1",
         "drupal/bootstrap": "^3.25",
         "drupal/bootstrap5": "^2.0",
         "drupal/color_field": "^2.5",
