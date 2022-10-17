@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '8bfd58d4f1e0ebbaa728640d7e5938800322ebf6',
+        'reference' => 'd2fd3fe99c20c31899e83e54c5f63b7685efa3fa',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -353,8 +353,8 @@
             ),
         ),
         'drupal/core-project-message' => array(
-            'pretty_version' => '9.4.5',
-            'version' => '9.4.5.0',
+            'pretty_version' => '9.4.8',
+            'version' => '9.4.8.0',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../drupal/core-project-message',
             'aliases' => array(),
@@ -463,7 +463,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '8bfd58d4f1e0ebbaa728640d7e5938800322ebf6',
+            'reference' => 'd2fd3fe99c20c31899e83e54c5f63b7685efa3fa',
             'dev_requirement' => false,
         ),
         'drupal/menu_block' => array(

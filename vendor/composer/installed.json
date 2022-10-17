@@ -1896,8 +1896,8 @@
         },
         {
             "name": "drupal/core-project-message",
-            "version": "9.4.5",
-            "version_normalized": "9.4.5.0",
+            "version": "9.4.8",
+            "version_normalized": "9.4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-project-message.git",
@@ -1913,6 +1913,7 @@
                 "composer-plugin-api": "^1.1 || ^2",
                 "php": ">=7.3.0"
             },
+            "time": "2022-02-24T17:40:53+00:00",
             "type": "composer-plugin",
             "extra": {
                 "class": "Drupal\\Composer\\Plugin\\ProjectMessage\\MessagePlugin"
@@ -1923,6 +1924,7 @@
                     "Drupal\\Composer\\Plugin\\ProjectMessage\\": "."
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0-or-later"
             ],
@@ -1931,6 +1933,9 @@
             "keywords": [
                 "drupal"
             ],
+            "support": {
+                "source": "https://github.com/drupal/core-project-message/tree/9.5.0-beta2"
+            },
             "install-path": "../drupal/core-project-message"
         },
         {
